@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 
-function App() {
+export default function App() {
   return <></>;
 }
-
-export default App;
