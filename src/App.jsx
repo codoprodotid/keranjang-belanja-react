@@ -79,7 +79,6 @@ function Form({ onAddItem }) {
       id: Date.now(),
     };
     onAddItem(newItem);
-    console.log(newItem);
     setName("");
     setQuantity(1);
   }
