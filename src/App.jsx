@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-
+import Header from "./components/Header";
 export default function App() {
   return (
     <div className="app">
-      <h1>Catatan Belanjaku 📝</h1>
+      <Header />
       <form className="add-form">
         <h3>Hari ini belanja apa kita?</h3>
         <div>
