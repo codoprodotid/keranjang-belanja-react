@@ -50,7 +50,9 @@ function GroceryList({ items, onDeleteItem, onToggleItem, onClearItems }) {
                         Urutkan berdasarkan nama barang
                     </option>
                     <option value="checked">Urutkan berdasarkan ceklis</option>
-                    <option value="price">Urutkan berdasarkan harga</option>
+                    <option value="price">
+                        Urutkan berdasarkan total harga
+                    </option>
                 </select>
                 <button onClick={onClearItems}>Bersihkan Daftar</button>
             </div>
