@@ -1,44 +1,61 @@
 import { useState } from "react";
 import Item from "./Item";
 function GroceryList({ items, onDeleteItem, onToggleItem, onClearItems }) {
-  const [sortBy, setSortBy] = useState("input");
-  let sortedItems;
+    const [sortBy, setSortBy] = useState("input");
+    let sortedItems;
 
-  switch (sortBy) {
-    case "name":
-      sortedItems = items.slice().sort((a, b) => a.name.localeCompare(b.name));
-      break;
-    case "checked":
-      sortedItems = items.slice().sort((a, b) => a.checked - b.checked);
-      break;
-    default:
-      sortedItems = items;
-      break;
-  }
-  return (
-    <>
-      <div className="list">
-        <ul>
-          {sortedItems.map((item) => (
-            <Item
-              item={item}
-              key={item.id}
-              onDeleteItem={onDeleteItem}
-              onToggleItem={onToggleItem}
-            />
-          ))}
-        </ul>
-      </div>
-      <div className="actions">
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="input">Urutkan berdasarkan urutan input</option>
-          <option value="name">Urutkan berdasarkan nama barang</option>
-          <option value="checked">Urutkan berdasarkan ceklis</option>
-        </select>
-        <button onClick={onClearItems}>Bersihkan Daftar</button>
-      </div>
-    </>
-  );
+    switch (sortBy) {
+        case "name":
+            sortedItems = items
+                .slice()
+                .sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case "checked":
+            sortedItems = items.slice().sort((a, b) => a.checked - b.checked);
+            break;
+        case "price":
+            sortedItems = items
+                .slice()
+                .sort((a, b) =>
+                    a.price * a.quantity > b.price * b.quantity ? 1 : -1
+                );
+            break;
+        default:
+            sortedItems = items;
+            break;
+    }
+    return (
+        <>
+            <div className="list">
+                <ul>
+                    {sortedItems.map((item) => (
+                        <Item
+                            item={item}
+                            key={item.id}
+                            onDeleteItem={onDeleteItem}
+                            onToggleItem={onToggleItem}
+                        />
+                    ))}
+                </ul>
+            </div>
+            <div className="actions">
+                <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                >
+                    <option value="input">
+                        Urutkan berdasarkan urutan input
+                    </option>
+                    <option value="name">
+                        Urutkan berdasarkan nama barang
+                    </option>
+                    <option value="checked">Urutkan berdasarkan ceklis</option>
+                    <option value="price">Urutkan berdasarkan harga</option>
+                </select>
+                <button onClick={onClearItems}>Bersihkan Daftar</button>
+            </div>
+        </>
+    );
 }
 
 export default GroceryList;
