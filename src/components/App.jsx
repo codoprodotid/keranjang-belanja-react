@@ -35,6 +35,10 @@ export default function App() {
     }
 
     function hanldeDeleteItem(id) {
+        const warning = confirm("Apakah anda yakin");
+        if (!warning) {
+            return;
+        }
         setItems((items) => items.filter((item) => item.id !== id));
     }
 
