@@ -9,8 +9,8 @@ const groceryItems = [
         id: 1,
         name: "Kopi Bubuk",
         quantity: 2,
-        price: 10000,
-        checked: true,
+        price: 5000,
+        checked: false,
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const groceryItems = [
         id: 3,
         name: "Air Mineral",
         quantity: 3,
-        price: 20000,
+        price: 2000,
         checked: false,
     },
 ];
@@ -48,9 +48,8 @@ export default function App() {
             label = "menandai BELUM SELESAI";
         }
         const warning = confirm(`Apakah Anda yakin ${label}?`);
-        if (!warning) {
-            return;
-        }
+        if (!warning) return;
+
         setItems((items) =>
             items.map((item) =>
                 item.id === id ? { ...item, checked: !item.checked } : item
@@ -63,6 +62,10 @@ export default function App() {
     }
 
     function handleRefresh() {
+        const warning = confirm(
+            "Apakah anda yakin untuk memuat ulang halaman? Data akan diatur dengan data awal"
+        );
+        if (!warning) return;
         location.reload();
     }
     return (
