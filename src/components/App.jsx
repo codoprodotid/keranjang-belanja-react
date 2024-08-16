@@ -42,7 +42,15 @@ export default function App() {
         setItems((items) => items.filter((item) => item.id !== id));
     }
 
-    function handleToggleItem(id) {
+    function handleToggleItem(id, checked) {
+        let label = "menandai SELESAI";
+        if (checked) {
+            label = "menandai BELUM SELESAI";
+        }
+        const warning = confirm(`Apakah Anda yakin ${label}?`);
+        if (!warning) {
+            return;
+        }
         setItems((items) =>
             items.map((item) =>
                 item.id === id ? { ...item, checked: !item.checked } : item
@@ -53,6 +61,10 @@ export default function App() {
     function handleClearItems() {
         setItems([]);
     }
+
+    function handleRefresh() {
+        location.reload();
+    }
     return (
         <div className="app">
             <Header />
@@ -62,6 +74,7 @@ export default function App() {
                 onDeleteItem={hanldeDeleteItem}
                 onToggleItem={handleToggleItem}
                 onClearItems={handleClearItems}
+                onRefresh={handleRefresh}
             />
             <Footer items={items} />
         </div>

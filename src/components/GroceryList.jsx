@@ -1,6 +1,12 @@
 import { useState } from "react";
 import Item from "./Item";
-function GroceryList({ items, onDeleteItem, onToggleItem, onClearItems }) {
+function GroceryList({
+    items,
+    onDeleteItem,
+    onToggleItem,
+    onClearItems,
+    onRefresh,
+}) {
     const [sortBy, setSortBy] = useState("input");
     let sortedItems;
 
@@ -55,6 +61,9 @@ function GroceryList({ items, onDeleteItem, onToggleItem, onClearItems }) {
                     </option>
                 </select>
                 <button onClick={onClearItems}>Bersihkan Daftar</button>
+                <button onClick={onRefresh} className="btn-refresh">
+                    Refresh
+                </button>
             </div>
         </>
     );

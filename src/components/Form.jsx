@@ -2,7 +2,7 @@ import { useState } from "react";
 function Form({ onAddItem }) {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(1);
-    const [price, setPrice] = useState(1);
+    const [price, setPrice] = useState("");
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -17,7 +17,7 @@ function Form({ onAddItem }) {
         onAddItem(newItem);
         setName("");
         setQuantity(1);
-        setPrice(0);
+        setPrice("");
     }
 
     const quantityNum = [...Array(20)].map((_, i) => (
@@ -38,7 +38,7 @@ function Form({ onAddItem }) {
                 </select>
                 <input
                     type="text"
-                    placeholder="nama barang..."
+                    placeholder="Nama barang..."
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                 />

@@ -4,7 +4,7 @@ function Item({ item, onDeleteItem, onToggleItem }) {
             <input
                 type="checkbox"
                 checked={item.checked}
-                onChange={() => onToggleItem(item.id)}
+                onChange={() => onToggleItem(item.id, item.checked)}
             />
             <span
                 style={item.checked ? { textDecoration: "line-through" } : {}}
