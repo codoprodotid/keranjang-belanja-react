@@ -6,7 +6,14 @@ function Form({ onAddItem }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (!name) return;
+        if (!name) {
+            alert("Nama barang harus diisi");
+            return;
+        }
+        if (!price) {
+            alert("Harga harus diisi");
+            return;
+        }
         const newItem = {
             name,
             quantity,
